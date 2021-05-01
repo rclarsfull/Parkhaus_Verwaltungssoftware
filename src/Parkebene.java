@@ -39,7 +39,7 @@ public class Parkebene implements Serializable {
 
     @Override
     public String toString() {
-        String ausgabe= "Parkebene{ " ;
+        String ausgabe= "" ;
         for (Parkplatz p:parkplaeze) {
             ausgabe+="\n\t"+ p.toString() + "\n";
         }

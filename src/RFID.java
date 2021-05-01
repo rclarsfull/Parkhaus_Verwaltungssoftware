@@ -5,6 +5,7 @@ Mail:   l.p.1999@live.de
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class RFID implements Serializable {
     private final int ZUSATZGEBUER=15;
@@ -13,11 +14,12 @@ public class RFID implements Serializable {
     private final int PREISPROSTUNDE=5;
     private final int PREISPROTAG=35;
     private String id;
-    private static int zaehler =1;
+    private static int zaehler =Speichern.ladenHighestRFID();
     private LocalDateTime eingparkt_am;
     private String typFahrzeug;
     private int ebene;
     private Parkplatz aktuellerParkplatz;
+
 
     RFID(String typ,int ebene,Parkplatz aktuellerParkplatz){
         eingparkt_am=LocalDateTime.now();

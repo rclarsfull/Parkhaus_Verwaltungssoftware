@@ -7,16 +7,22 @@ import java.util.ArrayList;
 public class Parkhaus implements Serializable {
     public String name, betreiber;
     private ArrayList<Parkebene> ebenen;
+    private ArrayList<String> allRFIDIds;
 
     Parkhaus(String name, String betreiber, String typ, int anzahlDerParklaezeVonEbene0) {
         ebenen = new ArrayList<>(1);
         ebenen.add(new Parkebene(anzahlDerParklaezeVonEbene0, typ, 0));
         this.name = name;
         this.betreiber = betreiber;
+        allRFIDIds=new ArrayList<>();
     }
 
     public void ebenehinzufuegen(String typ, int anzahlParkplaetze) {
         ebenen.add(new Parkebene(anzahlParkplaetze, typ, ebenen.size()));
+    }
+
+    public ArrayList<String> getAllRFIDIds() {
+        return allRFIDIds;
     }
 
     public ArrayList<Parkebene> getEbenen() {
@@ -75,6 +81,8 @@ public class Parkhaus implements Serializable {
         }
         return null;
     }
+
+
 }
 
 

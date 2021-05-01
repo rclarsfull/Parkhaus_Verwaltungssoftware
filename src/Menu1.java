@@ -48,12 +48,12 @@ public class Menu1 {
                     }
                     int maenge=Einlesen.readInt("Geben sie die Mänge der Parkplätze auf der unteren Parkebene an: ");
                     verwaltung.parkaeuser.add(new Parkhaus(name,nameBetreiber,typ,maenge));
-                    Speichern.ueberschreiben(verwaltung);
+                    Speichern.spreichern(verwaltung);
                     break;
                 case "4":
                     System.out.println("\n\n");
                     verwaltung.getParkaeuser().remove(verwaltung.findParkhaus(Einlesen.readString("Geben sie den Namen des zu löschenden Parkhauses an: ")));
-                    Speichern.ueberschreiben(verwaltung);
+                    Speichern.spreichern(verwaltung);
                     break;
                 default:
                     System.out.println("Falsche Eingabe wählen Sie eine der oben genannten Optionen.");
@@ -70,6 +70,7 @@ public class Menu1 {
             System.out.println("2. Parken");
             System.out.println("3. Ausparken");
             System.out.println("4. Parkhaus editieren");
+            System.out.println("5. Alle vergebenen RFIDs anzeigen");
             System.out.println("'exit' zum zurück gehen oder beenden");
             auswahl = Einlesen.readString("Tippen sie die nummer des Menüpunktes ein: ");
             switch (auswahl) {
@@ -85,7 +86,9 @@ public class Menu1 {
                     }else {
                         System.out.println(parkplatz.parken(Einlesen.readString("Tippen sie ihren Fahzeugtyp an ein (pkw/lkw/mieter): ")));
                     }
-                    Speichern.ueberschreiben(verwaltung);
+                    parkhaus.getAllRFIDIds().add(parkplatz.getChip().getId());
+                    Speichern.RFIDSspreichern(parkhaus.getAllRFIDIds());
+                    Speichern.spreichern(verwaltung);
                     break;
                 case "3":System.out.println("\n\n");
                     RFID chip = parkhaus.getRFIDCip(Einlesen.readString("Geben Sie bitte ihre RFID id ein: "));
@@ -93,13 +96,21 @@ public class Menu1 {
                         System.out.println("Die ID exestiert nicht. Überprüfen sie ihre Eingabe.");
                         break;
                     }
+                    parkhaus.getAllRFIDIds().remove(chip.getId());
                     System.out.println("Die Kosten balaufen sich auf: " + chip.ausparken() + " Euro\n Vielen Dank für ihren Besuch");
-                    Speichern.ueberschreiben(verwaltung);
+                    Speichern.RFIDSspreichern(parkhaus.getAllRFIDIds());
+                    Speichern.spreichern(verwaltung);
                     break;
                 case "4":
                     System.out.println("\n\n");
                     parkhausEdeitieren(parkhaus,verwaltung);
-                    Speichern.ueberschreiben(verwaltung);
+                    Speichern.spreichern(verwaltung);
+                    break;
+                case "5":
+                    System.out.println("\n\n");
+                    for (String s:parkhaus.getAllRFIDIds()) {
+                        System.out.println(s);
+                    }
                     break;
                 case "exit":
                     auswahl="exit1";
@@ -133,12 +144,12 @@ public class Menu1 {
                     }
                     int maenge=Einlesen.readInt("Geben sie die Mänge der Parkplätze auf der Parkebene an: ");
                     parkhaus.ebenehinzufuegen(typ,maenge);
-                    Speichern.ueberschreiben(verwaltung);
+                    Speichern.spreichern(verwaltung);
                     break;
                 case "2":
                     boolean test= parkhaus.obersteEbeneEntfernen();
                     if (!test) System.out.println("Ebene konnte nicht entfernt werden, da dort noch Autos parken");
-                    Speichern.ueberschreiben(verwaltung);
+                    Speichern.spreichern(verwaltung);
                     break;
                 case "exit":
                     auswahl="exit2";
