@@ -1,6 +1,10 @@
+/*
+Autor:  Lars Przybylek
+Mail:   l.p.1999@live.de
+ */
+import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Parkhaus {
+public class Parkhaus implements Serializable {
     public String name, betreiber;
     private ArrayList<Parkebene> ebenen;
 

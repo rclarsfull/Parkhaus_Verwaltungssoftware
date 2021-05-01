@@ -1,6 +1,10 @@
+/*
+Autor:  Lars Przybylek
+Mail:   l.p.1999@live.de
+ */
+import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Parkebene {
+public class Parkebene implements Serializable {
     ArrayList<Parkplatz> parkplaeze;
     Parkebene(int parkplaezeProEbene, String typ, int ebene){
         if (parkplaezeProEbene>1000){

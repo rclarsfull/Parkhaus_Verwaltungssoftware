@@ -1,8 +1,12 @@
+/*
+Autor:  Lars Przybylek
+Mail:   l.p.1999@live.de
+ */
+import java.io.Serializable;
 import java.time.Duration;
-
 import java.time.LocalDateTime;
 
-public class RFID {
+public class RFID implements Serializable {
     private final int ZUSATZGEBUER=15;
     private final int LKWENTSORGUNGSKOSTEN=300;
     private final int PREISINERSTEN30MIN=1;

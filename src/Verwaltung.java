@@ -1,6 +1,10 @@
+/*
+Autor:  Lars Przybylek
+Mail:   l.p.1999@live.de
+ */
+import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Verwaltung {
+public class Verwaltung implements Serializable {
 
     Verwaltung() {};
     ArrayList<Parkhaus> parkaeuser=new ArrayList<>();

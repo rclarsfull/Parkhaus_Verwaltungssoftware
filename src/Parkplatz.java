@@ -1,5 +1,10 @@
+import java.io.Serializable;
 
-public class Parkplatz {
+/*
+Autor:  Lars Przybylek
+Mail:   l.p.1999@live.de
+ */
+public class Parkplatz implements Serializable {
     private boolean istVerwendet;
     private boolean istDefekt;
     private int parkplatzNR;
